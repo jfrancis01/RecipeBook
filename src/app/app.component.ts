@@ -6,5 +6,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'course-project';
+  showRecipies: boolean = true;
+  showShoppingList: boolean = false;
+
+  onRecipesClicked(data: Event){
+    console.log("Recipies clicked");
+    this.showRecipies = true;
+    this.showShoppingList = false;
+  }
+
+  onShoppingListCliked(data: Event){
+    console.log("Shopping List clicked");
+    this.showRecipies = false;
+    this.showShoppingList = true;
+  }
 }
