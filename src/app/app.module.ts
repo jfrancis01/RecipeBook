@@ -13,6 +13,15 @@ import { RecipedetailComponent } from './recipebook/recipedetail/recipedetail.co
 import { FormsModule } from '@angular/forms';
 import { DropdownDirective } from './directives/dropdown.directive';
 import { ShoppingListService } from './shoppinglist/shopopinglist.service';
+import { Routes, RouterModule } from '@angular/router';
+import { RecipeBookComponent } from './recipebook/recipebook.component';
+
+// it is an array of routes and each route is just a javascript object inside the array
+const appRoutes : Routes = [
+  {path:'', component:RecipeBookComponent},
+  {path:'recipes', component:RecipeComponent},
+  {path:'shoppinglist', component:ShoppinglistComponent}
+]; 
 
 @NgModule({
   declarations: [
@@ -25,11 +34,13 @@ import { ShoppingListService } from './shoppinglist/shopopinglist.service';
     RecipelistComponent, 
     RecipeitemComponent, 
     RecipedetailComponent, 
+    RecipeBookComponent,
     DropdownDirective,
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [ShoppingListService],
   bootstrap: [AppComponent]
