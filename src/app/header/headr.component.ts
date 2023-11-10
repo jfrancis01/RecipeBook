@@ -4,7 +4,7 @@ import { Component, EventEmitter, Output } from "@angular/core";
     templateUrl:'./header.component.html',
     styleUrls: ['./header.component.css']
 })
-
+/* Just checking to see if git is working */
 export class HeaderComponent{
     
     @Output() shopingListClicked = new EventEmitter<any>();
