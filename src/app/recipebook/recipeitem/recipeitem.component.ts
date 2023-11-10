@@ -10,12 +10,13 @@ import { Router } from '@angular/router';
 })
 export class RecipeitemComponent {
   @Input() currentRecipe: Recipe;
-
+  @Input() currentIndex: Number;
     
   constructor(private recipeService: RecipeService, private router: Router){
 
   }
-  itemClicked(event: Event, daata: Recipe){
-    this.recipeService.recipeSelected.emit(this.currentRecipe);
-  }
+   itemClicked(event: Event, data: Recipe){
+    this.recipeService.selectedRecipe = data;
+    this.recipeService.recipeSelected.emit(data);
+   }
 }

@@ -19,8 +19,9 @@ import { RecipeBookComponent } from './recipebook/recipebook.component';
 // it is an array of routes and each route is just a javascript object inside the array
 const appRoutes : Routes = [
   {path:'', component:RecipeBookComponent},
-  {path:'recipes', component:RecipeComponent, children:[]},
-  {path:'recipedetail', component:RecipedetailComponent},
+  {path:'recipes', component:RecipeComponent, children:[
+    {path:':index', component:RecipedetailComponent}
+  ]},
   {path:'shoppinglist', component:ShoppinglistComponent}
 ]; 
 

@@ -10,6 +10,7 @@ export class RecipeService{
     [new Ingredient("Varsh", 1), new Ingredient("Cream", 1), new Ingredient("Dill", 3)])];
 
     recipeSelected = new EventEmitter<Recipe>();
+    selectedRecipe: Recipe;
     getRecipes(){
         return this.recipes.slice();
     }
