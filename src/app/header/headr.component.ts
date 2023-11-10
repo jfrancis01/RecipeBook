@@ -8,22 +8,8 @@ import { Route, Router } from "@angular/router";
 /* Just checking to see if git is working */
 export class HeaderComponent{
     
-    @Output() shopingListClicked = new EventEmitter<any>();
-    @Output() recipesClicked = new EventEmitter<any>();
-
     constructor(private router: Router){
 
     }
-
-    shoppingListSelected(){
-        //this.shopingListClicked.emit();
-        //this.router.navigate(['/shoppinglist']);
-    }
-
-    recipesSelected(){
-        //this.recipesClicked.emit();
-        //this.router.navigate(['/recipes']);
-    }
-
 
 }
