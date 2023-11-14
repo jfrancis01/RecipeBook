@@ -15,8 +15,4 @@ export class RecipeitemComponent {
   constructor(private recipeService: RecipeService, private router: Router){
 
   }
-   itemClicked(event: Event, data: Recipe){
-    this.recipeService.selectedRecipe = data;
-    this.recipeService.recipeSelected.emit(data);
-   }
 }

@@ -15,16 +15,22 @@ import { DropdownDirective } from './directives/dropdown.directive';
 import { ShoppingListService } from './shoppinglist/shopopinglist.service';
 import { Routes, RouterModule } from '@angular/router';
 import { RecipeBookComponent } from './recipebook/recipebook.component';
+import { ChoosefromlistComponent } from './recipebook/choosefromlist/choosefromlist.component';
+import { CommonModule } from '@angular/common';
+import { EditRecipeComponent } from './recipebook/recipe/edit-recipe/edit-recipe.component';
 
 // it is an array of routes and each route is just a javascript object inside the array
 const appRoutes : Routes = [
   {path:'', component:RecipeBookComponent},
   {path:'recipes', component:RecipeComponent, children:[
-    {path:':index', component:RecipedetailComponent}
+    {path:'', component:ChoosefromlistComponent, pathMatch:'full'},
+    {path:'new', component:EditRecipeComponent},
+    {path:':index', component:RecipedetailComponent},
+    {path:':index/edit', component:EditRecipeComponent}
   ]},
   {path:'shoppinglist', component:ShoppinglistComponent}
 ]; 
-
+//    
 @NgModule({
   declarations: [
     AppComponent, 
@@ -32,14 +38,14 @@ const appRoutes : Routes = [
     ShoppinglistComponent, 
     IngredientComponent, 
     ShoppingeditlistComponent, 
+    RecipedetailComponent,
     RecipeComponent, 
     RecipelistComponent, 
-    RecipeitemComponent, 
-    RecipedetailComponent, 
-    RecipeBookComponent,
-    DropdownDirective,
+    RecipeitemComponent,     
+    ChoosefromlistComponent, EditRecipeComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(appRoutes)
