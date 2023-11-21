@@ -43,6 +43,7 @@ const appRoutes : Routes = [
     RecipelistComponent, 
     RecipeitemComponent,     
     ChoosefromlistComponent, EditRecipeComponent,
+    DropdownDirective
   ],
   imports: [
     CommonModule,

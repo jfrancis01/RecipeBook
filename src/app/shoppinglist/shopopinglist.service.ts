@@ -1,6 +1,7 @@
 import { Recipe } from "../recipebook/recipe/recipe.model";
 import { Ingredient } from "./ingredient/ingredient.model";
 import { EventEmitter } from "@angular/core";
+import { Subject } from "rxjs";
 
 export class ShoppingListService{
 
@@ -13,11 +14,11 @@ export class ShoppingListService{
 
     addIngredients(ingredients: Ingredient[]){
         this.ingredients.push(...ingredients);
-        this.ingredientAdded.emit(this.ingredients);
+        this.ingredientAdded.next(this.ingredients);
     }
 
     addIngredient(ingredient: Ingredient){
         this.ingredients.push(ingredient);
-        this.ingredientAdded.emit(this.ingredients);
+        this.ingredientAdded.next(this.ingredients);
     }
 }
