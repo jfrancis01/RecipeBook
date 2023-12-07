@@ -10,7 +10,7 @@ import { RecipeComponent } from './recipebook/recipe/recipe.component';
 import { RecipelistComponent } from './recipebook/recipelist/recipelist.component';
 import { RecipeitemComponent } from './recipebook/recipeitem/recipeitem.component';
 import { RecipedetailComponent } from './recipebook/recipedetail/recipedetail.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DropdownDirective } from './directives/dropdown.directive';
 import { ShoppingListService } from './shoppinglist/shopopinglist.service';
 import { Routes, RouterModule } from '@angular/router';
@@ -49,6 +49,7 @@ const appRoutes : Routes = [
     CommonModule,
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [ShoppingListService],
