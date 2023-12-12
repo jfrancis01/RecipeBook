@@ -21,7 +21,8 @@ import { EditRecipeComponent } from './recipebook/recipe/edit-recipe/edit-recipe
 
 // it is an array of routes and each route is just a javascript object inside the array
 const appRoutes : Routes = [
-  {path:'', component:RecipeBookComponent},
+  //{path:'', component:RecipeBookComponent},
+  {path:'legacy', component:RecipeBookComponent},
   {path:'recipes', component:RecipeComponent, children:[
     {path:'', component:ChoosefromlistComponent, pathMatch:'full'},
     {path:'new', component:EditRecipeComponent},

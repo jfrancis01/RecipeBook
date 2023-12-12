@@ -4,6 +4,7 @@ import { EventEmitter } from "@angular/core";
 import { Subject } from "rxjs";
 
 export class RecipeService{
+    recipesChanged = new Subject<Recipe[]>
     private recipes : Recipe[] = 
     [new Recipe("Chicken Biryani", "Asli chicken biryani", "https://www.cubesnjuliennes.com/wp-content/uploads/2020/01/Chicken-Biryani-1025x1536.jpg",
     [new Ingredient("Whole Chicken", 1), new Ingredient("Shaan Masala", 1), new Ingredient("Onions", 3)]),
@@ -17,6 +18,13 @@ export class RecipeService{
     }
     getRecipe(index: number){
         return this.recipes[index];
+    }
+    addRecipe(recipe: Recipe){
+        this.recipes.push(recipe);
+        this.recipesChanged.next(this.recipes.slice());
+    }
+    updateRecipe(index: number, newRecipe: Recipe){
+        this.recipes[index] = newRecipe;
     }
 }
 
