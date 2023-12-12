@@ -18,6 +18,7 @@ import { RecipeBookComponent } from './recipebook/recipebook.component';
 import { ChoosefromlistComponent } from './recipebook/choosefromlist/choosefromlist.component';
 import { CommonModule } from '@angular/common';
 import { EditRecipeComponent } from './recipebook/recipe/edit-recipe/edit-recipe.component';
+import { RecipeService } from './recipebook/recipe/recipe.service';
 
 // it is an array of routes and each route is just a javascript object inside the array
 const appRoutes : Routes = [
@@ -53,7 +54,7 @@ const appRoutes : Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [ShoppingListService],
+  providers: [ShoppingListService, RecipeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
