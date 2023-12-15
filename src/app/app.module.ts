@@ -19,11 +19,11 @@ import { ChoosefromlistComponent } from './recipebook/choosefromlist/choosefroml
 import { CommonModule } from '@angular/common';
 import { EditRecipeComponent } from './recipebook/recipe/edit-recipe/edit-recipe.component';
 import { RecipeService } from './recipebook/recipe/recipe.service';
+import {HttpClientModule} from '@angular/common/http';
 
 // it is an array of routes and each route is just a javascript object inside the array
 const appRoutes : Routes = [
-  //{path:'', component:RecipeBookComponent},
-  {path:'legacy', component:RecipeBookComponent},
+  {path:'', component:RecipeBookComponent},
   {path:'recipes', component:RecipeComponent, children:[
     {path:'', component:ChoosefromlistComponent, pathMatch:'full'},
     {path:'new', component:EditRecipeComponent},
@@ -49,6 +49,7 @@ const appRoutes : Routes = [
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
