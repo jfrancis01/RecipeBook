@@ -12,6 +12,12 @@ export class RecipeResolverSerice implements Resolve<Recipe[]>{
     }
 
     resolve(route:ActivatedRouteSnapshot, state: RouterStateSnapshot){
-        return this.recipeService.onFetchData();
+        const recipes = this.recipeService.getRecipes();
+        if(recipes.length == 0){
+            return this.recipeService.onFetchData();
+        }
+        else{
+            return recipes;
+        }
     }
 }
