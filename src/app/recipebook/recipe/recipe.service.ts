@@ -4,6 +4,7 @@ import { EventEmitter } from "@angular/core";
 import { Subject } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { map, tap } from "rxjs";
 
 @Injectable()
 export class RecipeService{
@@ -51,11 +52,23 @@ export class RecipeService{
     }
 
     onFetchData(){
-        this.http.get<Recipe[]>(this.DATABASE + "/recipes.json").subscribe(responseData => {
+        return this.http.get<Recipe[]>(this.DATABASE + "/recipes.json")
+        .pipe(map(respondeData => {
+            return respondeData.map(recipe =>{
+                return {...recipe, ingredients: recipe.ingredients? recipe.ingredients: []};
+            });
+        }), 
+        
+        tap(responseData =>{
             console.log(responseData);
             this.recipes = responseData;
-            this.recipesChanged.next(this.recipes.slice());
-        });
+            this.recipesChanged.next(this.recipes.slice())
+        }))
+        // .subscribe(responseData => {
+        //     console.log(responseData);
+        //     this.recipes = responseData;
+        //     this.recipesChanged.next(this.recipes.slice());
+        // });
     }
 }
 
