@@ -21,9 +21,11 @@ import { EditRecipeComponent } from './recipebook/recipe/edit-recipe/edit-recipe
 import { RecipeService } from './recipebook/recipe/recipe.service';
 import {HttpClientModule} from '@angular/common/http';
 import { RecipeResolverSerice } from './recipebook/recipe/recipesresolverservice';
+import { AuthComponent } from './auth/auth.component';
 
 // it is an array of routes and each route is just a javascript object inside the array
 const appRoutes : Routes = [
+  {path:'auth', component: AuthComponent},
   {path:'', component:RecipeBookComponent},
   {path:'recipes', component:RecipeComponent, children:[
     {path:'', component:ChoosefromlistComponent, pathMatch:'full'},
@@ -36,7 +38,8 @@ const appRoutes : Routes = [
 //    
 @NgModule({
   declarations: [
-    AppComponent, 
+    AppComponent,
+    AuthComponent, 
     HeaderComponent, 
     ShoppinglistComponent, 
     IngredientComponent, 
