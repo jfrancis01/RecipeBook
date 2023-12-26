@@ -22,7 +22,7 @@ import { RecipeService } from './recipebook/recipe/recipe.service';
 import {HttpClientModule} from '@angular/common/http';
 import { RecipeResolverSerice } from './recipebook/recipe/recipesresolverservice';
 import { AuthComponent } from './auth/auth.component';
-
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 // it is an array of routes and each route is just a javascript object inside the array
 const appRoutes : Routes = [
   {path:'auth', component: AuthComponent},
@@ -39,8 +39,9 @@ const appRoutes : Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    AuthComponent, 
-    HeaderComponent, 
+    AuthComponent,
+    HeaderComponent,
+    LoadingSpinnerComponent,
     ShoppinglistComponent, 
     IngredientComponent, 
     ShoppingeditlistComponent, 
