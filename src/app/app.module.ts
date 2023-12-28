@@ -24,11 +24,12 @@ import { RecipeResolverSerice } from './recipebook/recipe/recipesresolverservice
 import { AuthComponent } from './auth/auth.component';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { AuthInterceptorService } from './auth/auth-interceptor.service.';
+import { AuthGuard } from './auth/auth.guard';
 // it is an array of routes and each route is just a javascript object inside the array
 const appRoutes : Routes = [
   {path:'auth', component: AuthComponent},
   {path:'', component:RecipeBookComponent},
-  {path:'recipes', component:RecipeComponent, children:[
+  {path:'recipes', component:RecipeComponent, canActivate:[AuthGuard], children:[
     {path:'', component:ChoosefromlistComponent, pathMatch:'full'},
     {path:'new', component:EditRecipeComponent},
     {path:':index', component:RecipedetailComponent, resolve:[RecipeResolverSerice]},
