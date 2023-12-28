@@ -1,10 +1,11 @@
 import { Ingredient } from "src/app/shoppinglist/ingredient/ingredient.model";
 import { Recipe } from "./recipe.model";
 import { EventEmitter } from "@angular/core";
-import { Subject } from "rxjs";
-import { HttpClient } from "@angular/common/http";
+import { Subject, exhaustMap } from "rxjs";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { map, tap } from "rxjs";
+import { map, tap, take } from "rxjs";
+import { AuthService } from "src/app/auth/auth.service";
 
 @Injectable()
 export class RecipeService{
@@ -21,7 +22,7 @@ export class RecipeService{
     DATABASE: string = "https://recipebook-31c59-default-rtdb.firebaseio.com";
 
 
-    constructor(private http:HttpClient){
+    constructor(private http:HttpClient,private authService : AuthService){
     }
 
     getRecipes(){
@@ -52,23 +53,22 @@ export class RecipeService{
     }
 
     onFetchData(){
-        return this.http.get<Recipe[]>(this.DATABASE + "/recipes.json")
-        .pipe(map(respondeData => {
-            return respondeData.map(recipe =>{
-                return {...recipe, ingredients: recipe.ingredients? recipe.ingredients: []};
-            });
-        }), 
-        
-        tap(responseData =>{
-            console.log(responseData);
-            this.recipes = responseData;
-            this.recipesChanged.next(this.recipes.slice())
-        }))
-        // .subscribe(responseData => {
-        //     console.log(responseData);
-        //     this.recipes = responseData;
-        //     this.recipesChanged.next(this.recipes.slice());
-        // });
+        return this.authService.user.pipe(take(1), exhaustMap(user => {
+            return this.http.get<Recipe[]>(this.DATABASE + "/recipes.json"
+            ).pipe(
+                map(respondeData => {
+                    return respondeData.map(recipe =>{
+                        return {...recipe, ingredients: recipe.ingredients? recipe.ingredients: []};
+                    });
+                }), 
+                
+                tap(responseData =>{
+                    console.log(responseData);
+                    this.recipes = responseData;
+                    this.recipesChanged.next(this.recipes.slice())
+                })
+            )
+        }));
     }
 }
 

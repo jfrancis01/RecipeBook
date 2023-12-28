@@ -19,10 +19,11 @@ import { ChoosefromlistComponent } from './recipebook/choosefromlist/choosefroml
 import { CommonModule } from '@angular/common';
 import { EditRecipeComponent } from './recipebook/recipe/edit-recipe/edit-recipe.component';
 import { RecipeService } from './recipebook/recipe/recipe.service';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { RecipeResolverSerice } from './recipebook/recipe/recipesresolverservice';
 import { AuthComponent } from './auth/auth.component';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+import { AuthInterceptorService } from './auth/auth-interceptor.service.';
 // it is an array of routes and each route is just a javascript object inside the array
 const appRoutes : Routes = [
   {path:'auth', component: AuthComponent},
@@ -60,7 +61,7 @@ const appRoutes : Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [ShoppingListService, RecipeService],
+  providers: [ShoppingListService, RecipeService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
