@@ -25,6 +25,7 @@ import { AuthComponent } from './auth/auth.component';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { AuthInterceptorService } from './auth/auth-interceptor.service.';
 import { AuthGuard } from './auth/auth.guard';
+import { AlertComponent } from './alert/alert.component';
 // it is an array of routes and each route is just a javascript object inside the array
 const appRoutes : Routes = [
   {path:'auth', component: AuthComponent},
@@ -43,6 +44,7 @@ const appRoutes : Routes = [
     AppComponent,
     AuthComponent,
     HeaderComponent,
+    AlertComponent,
     LoadingSpinnerComponent,
     ShoppinglistComponent, 
     IngredientComponent, 

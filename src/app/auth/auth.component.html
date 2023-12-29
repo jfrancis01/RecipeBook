@@ -5,9 +5,10 @@
   
   
       <div class="content">
-        <div class="alert alert-danger" *ngIf="error">
+        <!--<div class="alert alert-danger" *ngIf="error">
           <p>{{error}}</p>
-        </div>
+        </div>-->
+        <app-alert [message]="error" *ngIf="error" (close)="onHandleError()"></app-alert>
         <div *ngIf="isLoading">
           <app-loading-spinner></app-loading-spinner>
         </div>
