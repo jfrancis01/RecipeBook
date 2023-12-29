@@ -26,6 +26,7 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
 import { AuthInterceptorService } from './auth/auth-interceptor.service.';
 import { AuthGuard } from './auth/auth.guard';
 import { AlertComponent } from './alert/alert.component';
+import { PlaceHolderDirective } from './placeholder/placeholder.directive';
 // it is an array of routes and each route is just a javascript object inside the array
 const appRoutes : Routes = [
   {path:'auth', component: AuthComponent},
@@ -54,7 +55,8 @@ const appRoutes : Routes = [
     RecipelistComponent, 
     RecipeitemComponent,     
     ChoosefromlistComponent, EditRecipeComponent,
-    DropdownDirective
+    DropdownDirective,
+    PlaceHolderDirective
   ],
   imports: [
     CommonModule,
