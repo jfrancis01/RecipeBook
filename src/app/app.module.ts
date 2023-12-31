@@ -7,8 +7,6 @@ import { ShoppinglistComponent } from './shoppinglist/shoppinglist.component';
 import { IngredientComponent } from './shoppinglist/ingredient/ingredient.component';
 import { ShoppingeditlistComponent } from './shoppinglist/shoppingeditlist/shoppingeditlist.component';
 import { RecipeComponent } from './recipebook/recipe/recipe.component';
-import { RecipelistComponent } from './recipebook/recipelist/recipelist.component';
-import { RecipeitemComponent } from './recipebook/recipeitem/recipeitem.component';
 import { RecipedetailComponent } from './recipebook/recipedetail/recipedetail.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DropdownDirective } from './directives/dropdown.directive';
@@ -27,6 +25,7 @@ import { AuthInterceptorService } from './auth/auth-interceptor.service.';
 import { AuthGuard } from './auth/auth.guard';
 import { AlertComponent } from './alert/alert.component';
 import { PlaceHolderDirective } from './placeholder/placeholder.directive';
+import { RecipesModule } from './recipebook/recipes.module';
 // it is an array of routes and each route is just a javascript object inside the array
 const appRoutes : Routes = [
   {path:'auth', component: AuthComponent},
@@ -49,12 +48,8 @@ const appRoutes : Routes = [
     LoadingSpinnerComponent,
     ShoppinglistComponent, 
     IngredientComponent, 
-    ShoppingeditlistComponent, 
-    RecipedetailComponent,
-    RecipeComponent, 
-    RecipelistComponent, 
-    RecipeitemComponent,     
-    ChoosefromlistComponent, EditRecipeComponent,
+    ShoppingeditlistComponent,    
+    ChoosefromlistComponent,
     DropdownDirective,
     PlaceHolderDirective
   ],
@@ -63,6 +58,7 @@ const appRoutes : Routes = [
     HttpClientModule,
     BrowserModule,
     FormsModule,
+    RecipesModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
