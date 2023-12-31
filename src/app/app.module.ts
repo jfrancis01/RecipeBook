@@ -33,15 +33,13 @@ const appRoutes : Routes = [
     ChoosefromlistComponent,
   ],
   imports: [
-    CommonModule,
     HttpClientModule,
     BrowserModule,
-    FormsModule,
     RecipesModule,
-    ReactiveFormsModule,
     ShoppingListModule,
     SharedModule,
     CoreModule,
+    FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   bootstrap: [AppComponent]
