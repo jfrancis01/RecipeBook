@@ -18,16 +18,15 @@ import { RecipesModule } from './recipebook/recipes.module';
 import { ShoppingListModule } from './shoppinglist/shopping-list.module';
 import { SharedModule } from './shared.module';
 import { CoreModule } from './core.module';
+import { AuthModule } from './auth/auth.module';
 // it is an array of routes and each route is just a javascript object inside the array
 const appRoutes : Routes = [
-  {path:'auth', component: AuthComponent},
   {path:'', component:RecipeBookComponent},
 ]; 
 //    
 @NgModule({
   declarations: [
     AppComponent,
-    AuthComponent,
     HeaderComponent,
     IngredientComponent,    
     ChoosefromlistComponent,
@@ -39,7 +38,7 @@ const appRoutes : Routes = [
     ShoppingListModule,
     SharedModule,
     CoreModule,
-    FormsModule,
+    AuthModule,
     RouterModule.forRoot(appRoutes)
   ],
   bootstrap: [AppComponent]
