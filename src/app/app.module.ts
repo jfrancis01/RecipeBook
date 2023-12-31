@@ -5,9 +5,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/headr.component';
 import { ShoppinglistComponent } from './shoppinglist/shoppinglist.component';
 import { IngredientComponent } from './shoppinglist/ingredient/ingredient.component';
-import { ShoppingeditlistComponent } from './shoppinglist/shoppingeditlist/shoppingeditlist.component';
-import { RecipeComponent } from './recipebook/recipe/recipe.component';
-import { RecipedetailComponent } from './recipebook/recipedetail/recipedetail.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DropdownDirective } from './directives/dropdown.directive';
 import { ShoppingListService } from './shoppinglist/shopopinglist.service';
@@ -23,11 +20,11 @@ import { AuthInterceptorService } from './auth/auth-interceptor.service.';
 import { AlertComponent } from './alert/alert.component';
 import { PlaceHolderDirective } from './placeholder/placeholder.directive';
 import { RecipesModule } from './recipebook/recipes.module';
+import { ShoppingListModule } from './shoppinglist/shopping-list.module';
 // it is an array of routes and each route is just a javascript object inside the array
 const appRoutes : Routes = [
   {path:'auth', component: AuthComponent},
   {path:'', component:RecipeBookComponent},
-  {path:'shoppinglist', component:ShoppinglistComponent}
 ]; 
 //    
 @NgModule({
@@ -36,10 +33,8 @@ const appRoutes : Routes = [
     AuthComponent,
     HeaderComponent,
     AlertComponent,
-    LoadingSpinnerComponent,
-    ShoppinglistComponent, 
-    IngredientComponent, 
-    ShoppingeditlistComponent,    
+    LoadingSpinnerComponent, 
+    IngredientComponent,    
     ChoosefromlistComponent,
     DropdownDirective,
     PlaceHolderDirective
@@ -51,6 +46,7 @@ const appRoutes : Routes = [
     FormsModule,
     RecipesModule,
     ReactiveFormsModule,
+    ShoppingListModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [ShoppingListService, RecipeService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}],
