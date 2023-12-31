@@ -15,14 +15,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { RecipeBookComponent } from './recipebook/recipebook.component';
 import { ChoosefromlistComponent } from './recipebook/choosefromlist/choosefromlist.component';
 import { CommonModule } from '@angular/common';
-import { EditRecipeComponent } from './recipebook/recipe/edit-recipe/edit-recipe.component';
 import { RecipeService } from './recipebook/recipe/recipe.service';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import { RecipeResolverSerice } from './recipebook/recipe/recipesresolverservice';
 import { AuthComponent } from './auth/auth.component';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { AuthInterceptorService } from './auth/auth-interceptor.service.';
-import { AuthGuard } from './auth/auth.guard';
 import { AlertComponent } from './alert/alert.component';
 import { PlaceHolderDirective } from './placeholder/placeholder.directive';
 import { RecipesModule } from './recipebook/recipes.module';
@@ -30,12 +27,6 @@ import { RecipesModule } from './recipebook/recipes.module';
 const appRoutes : Routes = [
   {path:'auth', component: AuthComponent},
   {path:'', component:RecipeBookComponent},
-  {path:'recipes', component:RecipeComponent, canActivate:[AuthGuard], children:[
-    {path:'', component:ChoosefromlistComponent, pathMatch:'full'},
-    {path:'new', component:EditRecipeComponent},
-    {path:':index', component:RecipedetailComponent, resolve:[RecipeResolverSerice]},
-    {path:':index/edit', component:EditRecipeComponent, resolve: [RecipeResolverSerice]}
-  ]},
   {path:'shoppinglist', component:ShoppinglistComponent}
 ]; 
 //    
