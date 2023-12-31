@@ -17,6 +17,7 @@ import { AuthInterceptorService } from './auth/auth-interceptor.service.';
 import { RecipesModule } from './recipebook/recipes.module';
 import { ShoppingListModule } from './shoppinglist/shopping-list.module';
 import { SharedModule } from './shared.module';
+import { CoreModule } from './core.module';
 // it is an array of routes and each route is just a javascript object inside the array
 const appRoutes : Routes = [
   {path:'auth', component: AuthComponent},
@@ -40,9 +41,9 @@ const appRoutes : Routes = [
     ReactiveFormsModule,
     ShoppingListModule,
     SharedModule,
+    CoreModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [ShoppingListService, RecipeService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
