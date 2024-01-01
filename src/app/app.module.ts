@@ -4,24 +4,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/headr.component';
 import { IngredientComponent } from './shoppinglist/ingredient/ingredient.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ShoppingListService } from './shoppinglist/shopopinglist.service';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { RecipeBookComponent } from './recipebook/recipebook.component';
 import { ChoosefromlistComponent } from './recipebook/choosefromlist/choosefromlist.component';
-import { CommonModule } from '@angular/common';
-import { RecipeService } from './recipebook/recipe/recipe.service';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import { AuthComponent } from './auth/auth.component';
-import { AuthInterceptorService } from './auth/auth-interceptor.service.';
-import { RecipesModule } from './recipebook/recipes.module';
-import { ShoppingListModule } from './shoppinglist/shopping-list.module';
+import {HttpClientModule} from '@angular/common/http';
 import { SharedModule } from './shared.module';
 import { CoreModule } from './core.module';
-import { AuthModule } from './auth/auth.module';
 // it is an array of routes and each route is just a javascript object inside the array
 const appRoutes : Routes = [
   {path:'', component:RecipeBookComponent},
+  {path:'recipes', loadChildren: () => import('./recipebook/recipes.module').then(m => m.RecipesModule)},
+  {path:'shoppinglist', loadChildren: () => import('./shoppinglist/shopping-list.module').then(m => m.ShoppingListModule)},
+  {path:'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)}
 ]; 
 //    
 @NgModule({
@@ -34,12 +28,9 @@ const appRoutes : Routes = [
   imports: [
     HttpClientModule,
     BrowserModule,
-    RecipesModule,
-    ShoppingListModule,
     SharedModule,
     CoreModule,
-    AuthModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes, {preloadingStrategy: PreloadAllModules})
   ],
   bootstrap: [AppComponent]
 })
